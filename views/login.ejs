@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full flex flex-col justify-between items-center bg-white font-sans">
+  <!-- Instagram Logo and Text -->
+  <div class="flex flex-col items-center justify-center grow">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" class="w-16 h-16"> 
+   
+    <!-- Buttons -->
+    <div>
+        <form action="/login" method="post" class="mt-9 w-72 space-y-3">
+        <input required type="text" placeholder="Email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        <input required type="password" placeholder="Password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        <button  type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600">  Log in </button>
+        </form>
+    </div> 
+    <p class="mt-6">you have allready sign- up then <a class="text-blue-500" href="/create">Sign-up</a></p>
+  </div>
+
+  <!-- Meta Footer -->
+  <div class="pb-6 text-center text-sm text-gray-600">
+    <p>from</p>
+    <p class="text-black font-semibold">Meta</p>
+  </div>  
+  
+</body>
+</html>

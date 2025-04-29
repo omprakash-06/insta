@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Story - Instagram Clone</title>
+  <script src="https://kit.fontawesome.com/844cd933c3.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans text-sm text-gray-800">
+  <!-- Main Container -->
+  <div class="max-w-md mx-auto w-full pb-16">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between p-4 border-b">
+      <h2 class="font-semibold text-lg">Add Story</h2>
+      <a href="/feed/<%= user._id %>" class="text-gray-500">Cancel</a>
+    </div>
+
+    <!-- Add Story Form -->
+    <form action="/add-story" method="POST" enctype="multipart/form-data" class="p-4 space-y-4">
+      <div>
+        <label for="storyImage" class="block text-sm font-semibold">Choose Story Image</label>
+        <input type="file" name="storyImage" id="storyImage" accept="image/*" class="w-full border-gray-300 rounded-md" required />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Upload Story</button>
+    </form>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white flex justify-center items-center py-3 z-50">
+    <div class="flex justify-around items-center w-full max-w-md px-4 text-gray-700">
+      <a class="text-xl hover:text-black" href="/feed/<%= user._id %>"><i class="fa-solid fa-house"></i></a>
+      <a class="text-xl hover:text-black" href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a class="text-xl hover:text-black" href="/upload"><i class="fa-solid fa-plus"></i></a>
+      <a class="text-xl hover:text-black" href="/profile/<%= user._id %>"><i class="fa-solid fa-circle-user"></i></a>
+    </div>
+  </div>
+
+</body>
+</html>

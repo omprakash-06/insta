@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Clone Feed</title>
+  <script src="https://kit.fontawesome.com/844cd933c3.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans text-sm text-gray-800">
+  <!-- Main Container -->
+  <div class="max-w-md mx-auto w-full pb-16">
+    <!-- Stories -->
+    <div class="flex overflow-x-auto space-x-4 px-4 py-3 border-b snap-x snap-mandatory">
+      <% if (stories.length > 0) { %>
+        <% stories.forEach(story => { %>
+          <div class="flex flex-col items-center snap-start">
+            <div class="w-16 h-16 rounded-full border-2 border-pink-500 p-1 shadow">
+              <img src="<%= story.image %>" class="w-full h-full rounded-full object-cover" />
+            </div>
+            <p class="text-xs mt-1"><%= story.username %></p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <!-- Default story icon if no stories available -->
+        <a href="/add-story" class="flex flex-col items-center snap-start">
+          <div class="w-16 h-16 rounded-full border-2 border-gray-300 p-1 flex justify-center items-center bg-gray-100">
+            <i class="fa-solid fa-plus text-gray-500 text-xl"></i>
+          </div>
+          <p class="text-xs mt-1 text-gray-500">Add Story</p>
+        </a>
+      <% } %>
+    </div>
+
+    <!-- Feed Posts -->
+    <% if (posts.length > 0) { %>
+      <% posts.forEach(post => { %>
+        <div class="border-b pb-4 mb-4">
+          <!-- Post Header -->
+          <div class="flex items-center justify-between px-4 py-2">
+            <div class="flex items-center space-x-3">
+              <img src="<%= post.userImage %>" class="w-10 h-10 rounded-full object-cover" />
+              <div>
+                <p class="font-semibold text-sm"><%= post.username %></p>
+                <p class="text-xs text-gray-500"><%= post.subtitle %></p>
+              </div>
+            </div>
+            <span class="text-xl text-gray-500">⋮</span>
+          </div>
+
+          <!-- Post Image -->
+          <img src="<%= post.postImage %>" class="w-full object-cover" />
+
+          <!-- Post Footer -->
+          <div class="px-4 py-2"> 
+            <div class="flex space-x-4 text-xl text-gray-800 mb-1">
+              <a href="/like/<%= post._id %>">
+                <i class="fa-<%= post.likes.indexOf(user._id) === -1 ? 'regular' : 'solid' %> fa-heart text-red-500"></i>
+              </a>
+              <i class="fa-regular fa-comment"></i>
+              <i class="fa-regular fa-paper-plane"></i>
+            </div>
+
+            <p class="text-sm font-semibold"><%= post.likes.length %> likes</p>
+            <p class="text-sm"><span class="font-semibold"><%= post.username %></span> <%= post.caption %></p>
+            <p class="text-xs text-gray-500 mt-1"><%= post.createdAt %> ago</p>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p class="text-gray-500">No posts yet. <a href="/upload" class="text-blue-600 underline">Upload your first post!</a></p>
+    <% } %>
+
+  </div>
+
+  <!-- Responsive Bottom Navigation -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white flex justify-center items-center py-3 z-50">
+    <div class="flex justify-around items-center w-full max-w-md px-4 text-gray-700">
+      <a class="text-xl hover:text-black" href="/feed/<%= user._id %>"><i class="fa-solid fa-house"></i></a>
+      <a class="text-xl hover:text-black" href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a class="text-xl hover:text-black" href="/upload"><i class="fa-solid fa-plus"></i></a>
+      <a class="text-xl hover:text-black" href="/profile/<%= user._id %>"><i class="fa-solid fa-circle-user"></i></a>
+    </div>
+  </div>
+
+</body>
+</html>
